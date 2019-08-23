@@ -6,16 +6,38 @@
     <link rel="stylesheet" href="css/style.css">
     <!--    mapBox CSS-->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
 
-<h1>what up lemon!</h1>
 
-<div id='map' style='width: 100%; height: 70vh;'></div>
 
+
+
+
+        <div class="input-field col s12">
+            <input placeholder="Search" id="search" type="text" class="validate">
+            <label for="search"></label>
+        </div>
+
+        <div class="col s12" id='map' style='width: 100vh; height: 100vh;'></div>
+
+
+
+
+
+
+
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!--MapBox api-->
-<script src="js/keys.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+<!--Custom js-->
+<script src="js/keys.js"></script>
 <script src="js/mapbox-utils.js"></script>
+
 </body>
 </html>
