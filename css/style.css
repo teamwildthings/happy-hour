@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.button{
+    z-index: 1;
+}
+
 
 /*.row{*/
 /*    margin: 0;*/
