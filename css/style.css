@@ -1,7 +1,38 @@
+body {
+    margin:0;
+    padding:0;
+}
+
 .container{
     width: 100%;
 }
 
+#map {
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+
+#search-card{
+    z-index: 1;
+}
+
+/*Search bar parent*/
+.mapboxgl-ctrl-top-right{
+    width: 100%;
+    /*background: yellow;*/
+}
+/*Search bar child*/
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    width: 92vw;
+    max-width: 100%;
+    margin: 10px auto 0 auto;
+    float: none;
+    font-size: 1.5em;
+    height: 3.5em;
+    /*background: purple;*/
+}
 .button{
     z-index: 1;
 }
@@ -11,6 +42,25 @@
 /*    margin: 0;*/
 /*}*/
 
-/*.col{*/
-/*    padding: 0;*/
-/*}*/
+/*Search bar input*/
+.mapboxgl-ctrl-geocoder--input{
+    border-bottom: none !important;
+    margin: 0 0 8px 2em !important;
+    height: 4.5rem !important;
+    font-size: 1.2em !important;
+    cursor: pointer;
+
+}
+
+/*Search magnifier icon*/
+.mapboxgl-ctrl-geocoder--icon{
+    top: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+/*Input X icon*/
+.mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--pin-right > * {
+    top: 15px;
+
+}
