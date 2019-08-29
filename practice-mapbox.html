@@ -1,58 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Supplement forward geocoding search results from another data source</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        /*Search bar parent*/
+        .mapboxgl-ctrl-top-right{
+            width: 100%;
+        }
+        /*Search bar child*/
+        .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+            width: 92vw;
+            max-width: 100%;
+            margin: 10px auto 0 auto;
+            float: none;
+            font-size: 1.5em;
+            height: 2.5em;
+        }
+    </style>
+</head>
+<body>
 
-    // MapBox
-    mapboxgl.accessToken = mapBoxToken;
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+<div id='map'></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dDM2MDciLCJhIjoiY2p6aWhhbzd3MDJpbjNpcnVobHc3dTZldyJ9.ccnk3mi7A2ZSziBG7nM8fw';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 12,
-        // center: [-122.420679, 37.772537] // San Francisco
-        center: [-98.4916, 29.4252] // San Antonio
-        // center: [-77.0369, 38.9072] // Washington D.C
-        // center: [-97.7718784, 31.0810943] // Killeen, TX
-
-
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-87.6244, 41.8756],
+        zoom: 13
     });
-
-
-
-// Bar Object
-    var bars = [
-        {
-            name: "Jet-Setter",
-            address: "229 E Houston St #10, San Antonio, Tx 78205",
-            phone: "210-272-0457",
-            happyHour: "Blah Blah Blah"
-        },
-        {
-            name: "Chris Madrids San Antonio",
-            address: "600 N Presa St, San Antonio, Tx 78205",
-            phone: "210-267-9885",
-            happyHour: "Blah Blah Blah"
-        },
-        {
-            name: "Pinch Boil House",
-            address: "214 Broadway St, San Antonio, Tx 78205",
-            phone: "210-257-5152",
-            happyHour: "Blah Blah Blah"
-        }
-    ];
-
 
     var customData = {
         "features": [
             {
                 "type": "Feature",
                 "properties": {
-                    "title": "Pinch Boil House",
-                    "address": "214 Broadway St, San Antonio, Tx 78205",
-                    "phone": "210-257-5152",
-                    "description": "Blah Blah Blah"
+                    "title": "Lincoln Park",
+                    "description": "A northside park that is home to the Lincoln Park Zoo"
                 },
                 "geometry": {
                     "coordinates": [
-                        -98.4958736,
-                        29.4259826
-
+                        -87.637596,
+                        41.940403
                     ],
                     "type": "Point"
                 }
@@ -60,16 +58,13 @@
             {
                 "type": "Feature",
                 "properties": {
-                    "title": "Chris Madrids San Antonio",
-                    "address": "600 N Presa St, San Antonio, Tx 78205",
-                    "phone": "210-267-9885",
-                    "description": "Blah Blah Blah"
+                    "title": "Burnham Park",
+                    "description": "A lakefront park on Chicago's south side"
                 },
                 "geometry": {
                     "coordinates": [
-                        -98.5096223,
-                        29.4637981
-
+                        -87.603735,
+                        41.829985
                     ],
                     "type": "Point"
                 }
@@ -77,16 +72,13 @@
             {
                 "type": "Feature",
                 "properties": {
-                    "title": "Jet-Setter",
-                    "address": "229 E Houston St #10, San Antonio, Tx 78205",
-                    "phone": "210-272-0457",
-                    "description": "Blah Blah Blah"
+                    "title": "Millennium Park",
+                    "description": "A downtown park known for its art installations and unique architecture"
                 },
                 "geometry": {
                     "coordinates": [
-                        -98.4924166,
-                        29.4266195
-
+                        -87.622554,
+                        41.882534
                     ],
                     "type": "Point"
                 }
@@ -179,9 +171,6 @@
         "type": "FeatureCollection"
     };
 
-
-
-
     function forwardGeocoder(query) {
         var matchingFeatures = [];
         for (var i = 0; i < customData.features.length; i++) {
@@ -190,7 +179,7 @@
             if (feature.properties.title.toLowerCase().search(query.toLowerCase()) !== -1) {
                 // add a tree emoji as a prefix for custom data results
                 // using carmen geojson format: https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-                feature['place_name'] = '🍻 ' + feature.properties.title;
+                feature['place_name'] = '🌲 ' + feature.properties.title;
                 feature['center'] = feature.geometry.coordinates;
                 feature['place_type'] = ['park'];
                 matchingFeatures.push(feature);
@@ -199,9 +188,6 @@
         return matchingFeatures;
     }
 
-
-
-// Search function
     map.addControl(new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         localGeocoder: forwardGeocoder,
@@ -209,33 +195,7 @@
         placeholder: "Enter search e.g. Lincoln Park",
         mapboxgl: mapboxgl
     }));
+</script>
 
-    // Marker and PopUp function
-    function geoPen(object){
-
-        // Marker
-        var marker = new mapboxgl.Marker()
-        // marker.setLngLat([-98.4916, 29.4260]); //Alamo location
-            .setLngLat(object.geometry.coordinates)
-            // .setPopup(popUp)
-            .addTo(map);
-
-
-        // PopUp
-        var popUp = new mapboxgl.Popup()
-            .setHTML(object.properties.title + "<br>" + object.properties.address + "<br>" + object.properties.phone + "<br>" + object.properties.description);
-
-        marker.setPopup(popUp);
-
-    }
-
-var feature = customData.features;
-
-    feature.forEach(geoPen);
-
-    feature.forEach(function (bar) {
-        geoPen(bar)
-
-    });
-
-
+</body>
+</html>
