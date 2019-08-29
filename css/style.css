@@ -33,6 +33,14 @@ body {
     height: 3.5em;
     /*background: purple;*/
 }
+.button{
+    z-index: 1;
+}
+
+
+/*.row{*/
+/*    margin: 0;*/
+/*}*/
 
 /*Search bar input*/
 .mapboxgl-ctrl-geocoder--input{
