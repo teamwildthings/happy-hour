@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Happy Hour</title>
-    <link rel="stylesheet" href="css/style.css">
+
     <!--    mapBox CSS-->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
-    <!-- Compiled and minified CSS -->
+    <!-- Compiled and minified CSS materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Mapbox search plugin css for search bar-->
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!--Mapbox search plugin javascript for search bar-->
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
 
 
 
 
 
 
-        <div class="input-field col s12">
-            <input placeholder="Search" id="search" type="text" class="validate">
-            <label for="search"></label>
-        </div>
+<!--        <div id="search-card" class="input-field col s12 card-panel hoverable halfway-fab ">-->
+<!--            <input placeholder="Search" id="search" type="text" class="validate">-->
+<!--            <label for="search"></label>-->
+<!--        </div>-->
 
         <div class="col s12" id='map' style='width: 100vw; height: 100vh;'></div>
 
@@ -31,7 +37,7 @@
 
 
 
-<!-- Compiled and minified JavaScript -->
+<!-- Compiled and minified JavaScript materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!--MapBox api-->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
