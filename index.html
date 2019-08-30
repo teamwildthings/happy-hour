@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Happy Hour</title>
-
+    <!--    Meta for self location-->
+<!--    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />-->
     <!--    mapBox CSS-->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
     <!-- Compiled and minified CSS materialize -->
@@ -22,7 +23,7 @@
 
 
 
-<a id="button" style="width: 235px; height: 235px; bottom: 150px; right: 50px; box-shadow: 13px 10px 32px -17px rgba(0, 0, 0, 0.75);" class="btn-floating medium halfway-fab waves-effect waves-light limegreen"><i class="material-icons white"></i></a>
+<a id="button" style="width: 235px; height: 235px; bottom: 150px; right: 50px; box-shadow: 13px 10px 32px -17px rgba(0, 0, 0, 0.75);" class="btn-floating medium halfway-fab waves-effect waves-light limegreen"><i style="font-size: 150px; line-height: 235px" class="material-icons">location_searching</i></a>
 
 
 
@@ -40,7 +41,7 @@
 
 
 
-
+<script src="https://code.jquery.com/jquery-2.2.4.js"integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!--MapBox api-->
@@ -48,6 +49,7 @@
 <!--Custom js-->
 <script src="js/keys.js"></script>
 <script src="js/mapbox-utils.js"></script>
+<script src="js/self-locator.js"></script>
 
 </body>
 </html>

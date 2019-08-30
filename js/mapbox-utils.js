@@ -237,5 +237,3 @@ var feature = customData.features;
         geoPen(bar)
 
     });
-
-
