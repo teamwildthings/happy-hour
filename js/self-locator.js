@@ -1,11 +1,4 @@
 
-// map.addControl(new mapboxgl.GeolocateControl({
-//     positionOptions: {
-//         enableHighAccuracy: true
-//     },
-//     trackUserLocation: true
-// }));
-//
 $('#button').click(function () {
 navigator.geolocation.getCurrentPosition(position => {
     const userCoordinates = [position.coords.longitude, position.coords.latitude];
